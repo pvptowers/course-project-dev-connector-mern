@@ -5,18 +5,13 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-// import axios from "axios";
-
 const Register = ({ setAlert, register, isAuthenticated }) => {
-  //Our state is formData - the function we use to update our state is setFormData
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     password2: ""
   });
-
-  //destructure above so you dont need to do formData.
 
   const { name, email, password, password2 } = formData;
 
@@ -31,31 +26,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       register({ name, email, password });
     }
   };
-
-  // const onSubmit = async e => {
-  //   e.preventDefault();
-  //   if (password !== password2) {
-  //     console.log("Passwords do not match");
-  //   } else {
-  //     const newUser = {
-  //       name,
-  //       email,
-  //       password
-  //     };
-  //     try {
-  //       const config = {
-  //         headers: {
-  //           "Content-Type": "application/json"
-  //         }
-  //       };
-  //       const body = JSON.stringify(newUser);
-  //       const res = await axios.post("/api/users", body, config);
-  //       console.log(res.data);
-  //     } catch (err) {
-  //       console.error(err.response.data);
-  //     }
-  //   }
-  // };
 
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;

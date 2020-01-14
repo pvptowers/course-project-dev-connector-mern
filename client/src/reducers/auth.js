@@ -9,9 +9,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  //Token is stored in localstorage
   token: localStorage.getItem("token"),
-  // Once user registers or logs in we will set isAuthenticated to true
   isAuthenticated: null,
   loading: true,
   user: null
@@ -24,7 +22,7 @@ export default function(state = initialState, action) {
     case USER_LOADED:
       return {
         ...state,
-        isAuthenicated: true,
+        isAuthenticated: true,
         loading: false,
         user: payload
       };
@@ -34,7 +32,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         ...payload,
-        isAuthenicated: true,
+        isAuthenticated: true,
         loading: false
       };
     case REGISTER_FAIL:
@@ -45,10 +43,9 @@ export default function(state = initialState, action) {
       return {
         ...state,
         token: null,
-        isAuthenicated: false,
+        isAuthenticated: false,
         loading: false
       };
-
     default:
       return state;
   }
